@@ -1,4 +1,4 @@
-def search(product)
+def find_sellers(product)
   url = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=#{CGI.escape(product)}"
   doc = Nokogiri::HTML(open(url))
 
