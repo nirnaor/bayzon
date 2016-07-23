@@ -6,7 +6,11 @@ class DevProvider
   end
 
   def find_sellers(product)
-    return JSON.parse(File.read('test/results.json'))
+    products = JSON.parse(File.read('test/results.json'))
+    while products.size > 0 do
+      ProductsChannel.broadcast(product, products.pop(2))
+      sleep(2)
+    end
   end
 end
 

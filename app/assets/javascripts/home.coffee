@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+document.addEventListener "DOMContentLoaded",  ->
+  prod = document.querySelector("#product")
+  return if not prod
+  prod = prod.innerHTML
+  console.log "Will now fetch data for #{prod}"
+  fetch("/sellers?product=#{prod}").then ->
+   console.log "Done fetching data #{prod}"

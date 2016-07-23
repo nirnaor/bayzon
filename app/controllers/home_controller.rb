@@ -1,10 +1,18 @@
 require 'data_providers'
 
 class HomeController < ApplicationController
+
+  def sellers
+    product = params[:product]
+    provider = get_provider()
+    provider.find_sellers(product)
+    render text: "done"
+  end
+
   def search
   end
 
-  def fetch_sellers
+  def product_name
     query = params[:query]
     provider = get_provider()
     begin
@@ -15,17 +23,13 @@ class HomeController < ApplicationController
       render :search and return
     end
 
-    begin
-      @products = provider.find_sellers(@product_name)
-      flash[:success] = "Displaying sellers in Amazon for product #{@product_name}"
-      render :index
-    rescue Exception => ex
-      logger.error ex.backtrace
-      flash[:warning] = "There was a problem fetching sellers from Amazon for product named '#{@product_name}'"
-      render :search and return
-    end
+    flash[:success] = "Displaying sellers in Amazon for product #{@product_name}"
+    @products = []
+    render :index
+
   end
 
   def index
   end
+
 end
