@@ -1,2 +1,13 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+table
+  tr
+    th Name
+    th Seller
+    th Price
+  - @products.each do |product|
+    tr
+      td
+        = product[0]
+      td
+        = product[1]
+      td
+        = product[2]
