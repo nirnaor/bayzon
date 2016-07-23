@@ -3,11 +3,4 @@ table
     th Name
     th Seller
     th Price
-  - @products.each do |product|
-    tr
-      td
-        = product[0]
-      td
-        = product[1]
-      td
-        = product[2]
+  = render partial: "products", locals: {products: @products}
