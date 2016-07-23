@@ -1,8 +1,6 @@
-require 'amazon'
-
 namespace :amazon do
   task sellers: :environment do
-    product = "phone"
-    print find_sellers(product)
+    p = ProductionProvider.new
+    print p.find_sellers("phone")
   end
 end

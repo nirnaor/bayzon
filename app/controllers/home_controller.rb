@@ -1,5 +1,4 @@
-require 'amazon'
-require 'ebay'
+require 'data_providers'
 
 class HomeController < ApplicationController
   def search
@@ -7,8 +6,9 @@ class HomeController < ApplicationController
 
   def fetch_sellers
     query = params[:query]
+    provider = get_provider()
     begin
-      @product_name = product_name(query)
+      @product_name = provider.product_name(query)
     rescue Exception => ex
       logger.error ex.backtrace
       flash[:warning] = "There was a problem fetching the product name from ebay"
@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     end
 
     begin
-      @products = find_sellers(@product_name)
+      @products = provider.find_sellers(@product_name)
       flash[:success] = "Displaying sellers in Amazon for product #{@product_name}"
       render :index
     rescue Exception => ex
