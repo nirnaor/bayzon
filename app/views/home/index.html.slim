@@ -1,6 +1,7 @@
+h1#product  = product_name
 table
   tr
     th Name
     th Seller
     th Price
-  = render partial: "products", locals: {products: @products}
+  = render partial: "products", locals: {products: products, product_name: product_name}

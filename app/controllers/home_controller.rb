@@ -16,16 +16,15 @@ class HomeController < ApplicationController
     query = params[:query]
     provider = get_provider()
     begin
-      @product_name = provider.product_name(query)
+      product_name = provider.product_name(query)
     rescue Exception => ex
       logger.error ex.backtrace
       flash[:warning] = "There was a problem fetching the product name from ebay"
       render :search and return
     end
 
-    flash[:success] = "Displaying sellers in Amazon for product #{@product_name}"
-    @products = []
-    render :index
+    flash[:success] = "Displaying sellers in Amazon for product #{product_name}"
+    render :index, locals: {products: [], product_name: product_name}
 
   end
 
