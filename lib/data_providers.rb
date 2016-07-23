@@ -21,7 +21,7 @@ class ProductionProvider
     # 16GB etc. Maybe there's a gem that will solve this problem better (or a 
     # library). At the moment I'll use the first 5 words of the product and 
     # optimize my solution later
-    name.truncate_words(5, omission: '')
+    name.truncate_words(3, omission: '')
   end
 
   def product_name(url)
@@ -53,6 +53,8 @@ class ProductionProvider
       next if values.include? nil
       res.push(values.map{|x| x.children.last.text})
     }
+
+    ProductsChannel.broadcast(product, res)
     return res
   end
 end
