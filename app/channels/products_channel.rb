@@ -4,8 +4,9 @@ class ProductsChannel < ApplicationCable::Channel
     broadcast_to product_name, products:
       HomeController.render(partial: "home/products", locals: {products: page_products})
   end
+    
   def subscribed
-    stream_for "iPhone"
+    stream_for params[:product]
   end
 
   def unsubscribed
