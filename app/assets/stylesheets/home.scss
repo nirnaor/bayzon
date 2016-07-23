@@ -2,38 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.alert-warning{
-  background: red;
+$warning-red: #f00;
+$warning-green: #0f0;
+
+.alert-warning {
+  background: $warning-red;
 }
-.alert-success{
-  background: green;
+
+.alert-success {
+  background: $warning-green;
 }
+
 .container {
-  text-align: center;
-  margin-top: 50px;
   font-size: 5vw;
+  margin-top: 50px;
+  text-align: center;
 }
-.header{
-  .blue{ color: rgb(66, 133, 244); }
-  .red{ color: rgb(234, 67, 53); }
-  .yellow{ color: rgb(251 ,188, 5); }
-  .green{ color: rgb(52 ,168, 83); }
-  .rotate{
-    transform: rotate(-20deg);
+
+.header {
+  $blue: rgb(66, 133, 244);
+  $red: rgb(234, 67, 53);
+  $yellow: rgb(251, 188, 5);
+  $green: rgb(52, 168, 83);
+
+  .blue { color: $blue; }
+  .red { color: $red; }
+  .yellow { color: $yellow; }
+  .green { color: $green; }
+
+  .rotate {
     display: inline-block;
+    transform: rotate(-20deg);
   }
 }
-.search{
-  input{
-    &[type='text']{
-      width: 40%;
+
+.search {
+  input {
+    &[type='text'] {
       height: 36px;
+      width: 40%;
     }
   }
 }
-table{
+
+table {
   width: 90%;
-  th, td{
+
+  th,
+  td {
     width: 30%;
   }
 }
