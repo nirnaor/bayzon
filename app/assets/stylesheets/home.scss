@@ -6,10 +6,21 @@
   margin-top: 50px;
   font-size: 5vw;
 }
+.header{
+  .blue{ color: rgb(66, 133, 244); }
+  .red{ color: rgb(234, 67, 53); }
+  .yellow{ color: rgb(251 ,188, 5); }
+  .green{ color: rgb(52 ,168, 83); }
+  .rotate{
+    transform: rotate(-20deg);
+    display: inline-block;
+  }
+}
 .search{
   input{
     &[type='text']{
       width: 40%;
+      height: 36px;
     }
   }
 }
