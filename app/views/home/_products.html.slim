@@ -1,8 +1,8 @@
 - products.each do |product|
   tr
     td
-      = product[0]
+      = product[0].truncate_words(6)
     td
-      = product[1]
+      = product[1].truncate_words(6)
     td
       = product[2]
