@@ -13,6 +13,7 @@ class HomeController < ApplicationController
 
   def product_name
     query = params[:query]
+    product_name = nil
     begin
       product_name = provider.product_name(query)
     rescue StandardError => ex
@@ -21,7 +22,7 @@ class HomeController < ApplicationController
       render :search && return
     end
 
-    flash[:success] = 'Displaying sellers for product #{product_name}'
+    flash[:success] = "Displaying sellers for product #{product_name}"
     render :index, locals: { products: [], product_name: product_name }
   end
 
