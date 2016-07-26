@@ -9,7 +9,7 @@ class DevProvider
 
   def find_sellers(product)
     products = JSON.parse(File.read('test/results.json'))
-    until products.empty
+    until products.empty?
       ProductsChannel.broadcast(product, products.pop(2))
       sleep(2)
     end
@@ -65,8 +65,6 @@ class ProductionProvider
   end
 
   def find_sellers_for(doc, product)
-    # doc = Nokogiri::HTML(open(url))
-
     relevant = doc.search('#s-results-list-atf li')
     res = []
     relevant.each do |el|
@@ -81,8 +79,6 @@ class ProductionProvider
 end
 
 def provider
-  return ProductionProvider.new
-  p = { development: DevProvider,
-        production: ProductionProvider }[Rails.env.to_sym]
-  p.new
+  { development: DevProvider,
+    production: ProductionProvider }[Rails.env.to_sym].new
 end
